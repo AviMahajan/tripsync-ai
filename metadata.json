@@ -1,0 +1,6 @@
+{
+  "name": "TripSync",
+  "description": "An AI-powered collaborative platform that helps groups reach consensus on travel plans before generating personalized itineraries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
