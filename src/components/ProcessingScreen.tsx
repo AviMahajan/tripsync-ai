@@ -29,7 +29,16 @@ export function ProcessingScreen() {
       });
 
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
+        const text = await res.text();
+        console.error("API Error Response (raw text):", text);
+        
+        let data;
+        try {
+          data = JSON.parse(text);
+        } catch {
+          data = { error: `Failed to generate trip consensus (Status: ${res.status}): ${text}` };
+        }
+        
         throw new Error(data.error || "The AI Travel Council could not establish common ground. Please try again.");
       }
 

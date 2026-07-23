@@ -14,6 +14,7 @@ export function CreateRoom() {
   const [loading, setLoading] = useState(false);
 
   const handleCreate = async () => {
+    console.log('handleCreate clicked');
     if (!hostName.trim()) {
         alert('Please enter your name.');
         return;
@@ -30,8 +31,10 @@ export function CreateRoom() {
         alert('Please select a date range.');
         return;
     }
+    console.log('Form validation passed');
     setLoading(true);
     try {
+      console.log('Starting Firebase room creation...');
       const travelDates = `${format(date.from, "LLL dd")} - ${format(date.to, "LLL dd")}`;
       const { id, code } = await firebaseService.createRoom({ 
         hostName, 
@@ -39,17 +42,22 @@ export function CreateRoom() {
         tripName: tripData.tripName, 
         destination: tripData.destination 
       });
+      console.log('Room created successfully:', { id, code });
       setRoomId(id);
       
       // Also join the host as the first participant
+      console.log('Joining host to room...');
       const { participantId } = await firebaseService.joinRoom(code, hostName);
+      console.log('Host joined successfully:', participantId);
       setParticipantId(participantId);
 
+      console.log('Navigating to waiting room...');
       setPage('waiting');
     } catch (error) {
-      console.error('Error creating room:', error);
-      alert('Failed to create room. Please try again.');
+      console.error('CRITICAL ERROR in handleCreate:', error);
+      alert(`Failed to create room: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
+      console.log('handleCreate finally block reached');
       setLoading(false);
     }
   };

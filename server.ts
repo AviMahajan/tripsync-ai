@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
-import { firebaseService } from "./src/lib/firebase";
+import { firebaseService } from "./src/lib/firebase.server";
 import { buildTravelCouncilPrompt } from "./src/prompts/travelCouncil";
 
 const app = express();
