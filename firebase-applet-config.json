@@ -3,6 +3,7 @@
   "appId": "1:697254011355:web:2641841a6c8a6e70c607fe",
   "apiKey": "AIzaSyDaGuK0JXz_lZJQBc2f81OQEUnspt7siAQ",
   "authDomain": "tripsync-6bc7c.firebaseapp.com",
+  "firestoreDatabaseId": "ai-studio-tripsync-e7554222-0d43-474a-b461-61492f651139",
   "storageBucket": "tripsync-6bc7c.firebasestorage.app",
   "messagingSenderId": "697254011355",
   "measurementId": "",
