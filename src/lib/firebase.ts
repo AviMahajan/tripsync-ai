@@ -12,7 +12,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app, config.firestoreDatabaseId);
+const db = getFirestore(app);
 
 export const firebaseService = {
   db,
